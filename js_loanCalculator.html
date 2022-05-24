@@ -1,0 +1,47 @@
+<<!DOCTYPE html "-//w3c//dtd html 3.2 final//en">
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Javascript Loan Calculator</title>
+	<script type="text/javascript">
+		function calculateLoan() {
+			// get the loan values
+			var loanAmount = parseFloat(document.getElementById("loanAmount").value);
+			var loanLength = parseInt(document.getElementById("loanLength").value);
+			var interest = parseFloat(document.getElementById("interest").value)/1200;
+
+			//declare output variable
+			var monthlyPayment;
+
+			//calculate loan payment value
+			monthlyPayment= loanAmount * interest / (1- (Math.pow(1/(1 + interest), loanLength)));
+
+			//output to textbox
+			document.getElementById("monthlyPayment").value = monthlyPayment;
+		}
+	</script>
+
+</head>
+<body>
+	<h1>Javascript Loan Calculator</h1>
+	<p>To use, enter values for the Loan Amount, Number of Months for Loan, and the Interest Rate (e.g. 7.25), and click the Calculate button. Clicking the Reset button will clear entered values.</p>
+		<form name="calculatorForm">
+			Loan Amount:
+			<input type="text" id="loanAmount" name="loanAmount" value="" /><br />
+
+			Loan Length in Months:
+			<input type="text" id="loanLength" name="loanMonths" value="" /><br />
+
+			Annual Interest Rate:
+			<input type="text" id="interest" name="loanMonths" value="" /><br />
+
+			Monthly Payment:
+			<input type="text" id="monthlyPayment" name="monthlyPayment" value="" /><br />
+
+			<input type="button" id="calculate" name="Calculate" value="Calculate" onclick="calculateLoan();" /><br />
+
+			<input type="reset" id="Reset" name="Reset" value="Reset" /><br />
+		</form>
+</body>
+</html>
